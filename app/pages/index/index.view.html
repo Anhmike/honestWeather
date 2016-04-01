@@ -1,0 +1,15 @@
+<ion-content class="weather-bg"
+    [ngClass]="{
+        'weather-bg-warm': weather.currently.temperature >= 65,
+        'weather-bg-cool': weather.currently.temperature > 0 && weather.currently.temperature < 65
+    }">
+    <h1 class="weather-temp">{{ weather.currently.temperature | number:'1.0-0' }}°</h1>
+    <p class="weather-summary">{{ weather.currently.summary }}</p>
+
+    <ion-row class="weather-weekly" *ngIf="weather.daily">
+      <ion-col *ngFor="#entry of weather.daily.data">
+        {{ entry.temperatureMax | number:'1.0-0' }}°
+      </ion-col>
+    </ion-row>
+
+</ion-content>
